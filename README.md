@@ -78,33 +78,7 @@ Esquema enfocado en la integridad referencial entre carreras técnicas y estudia
 
 ---
 
-## 4. Guía de Ejecución e Importación
-
-### Requisitos Previos
-* Tener instalado **MySQL Server 8.0** o superior (o MariaDB equivalente).
-* Cliente de línea de comandos (CLI `mysql`) o entorno gráfico como MySQL Workbench / DBeaver.
-
-### Instrucciones para Clonar y Ejecutar
-1. Clonar el repositorio en tu máquina local:
-   ```bash
-   git clone <URL_DEL_REPOSITORIO>
-   cd nombre-repositorio-sql
-   ```
-
-2. Iniciar sesión en el servidor de MySQL desde la consola:
-   ```bash
-   mysql -u usuario -p
-   ```
-
-3. Ejecutar un script SQL directamente desde la CLI de MySQL:
-   ```sql
-   SOURCE 01-ddl-definicion-estructuras/01-creacion-bases-datos.sql;
-   SOURCE 04-casos-practicos-evaluaciones/centro-educativo-db.sql;
-   ```
-
----
-
-## 5. Convenciones de Código Aplicadas
+## 4. Convenciones de Código Aplicadas
 
 Para garantizar la legibilidad y mantenibilidad del código SQL, se han seguido las siguientes buenas prácticas:
 * **Palabras reservadas en mayúsculas:** `SELECT`, `FROM`, `WHERE`, `CREATE TABLE`, `PRIMARY KEY`.
