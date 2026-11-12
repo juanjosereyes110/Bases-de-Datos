@@ -5,36 +5,45 @@ show databases;  # comando para ver las bases de datos.
 
 use centro_educativo; # comando para seleccionar DB
 
-create table colegio( # comando para crear DB
-	id_colegio int auto_increment primary key,
-    nombre_colegio varchar(100) not null,
-    direccion varchar(50) not null,
-    telefono varchar(15) not null,
-    correo varchar(50),
-    cant_estudiante int not null
+CREATE TABLE colegio (
+    id_colegio INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_colegio VARCHAR(100) NOT NULL,
+    direccion VARCHAR(50) NOT NULL,
+    telefono VARCHAR(15) NOT NULL,
+    correo VARCHAR(50),
+    cant_estudiante INT NOT NULL
 );
 
-create table estudiantes(
-	ind_estudiante int auto_increment primary key,
-    id_colegio_estudiante int,
-    nombre varchar(25) not null,
-    apellido varchar(50) not null,
-    cedula varchar(20) unique not null,
-    fecha_nacimiento date,
-    correo varchar(50),
-    activo boolean default true,
-    fecha_de_registro timestamp default current_timestamp
+CREATE TABLE estudiantes (
+    ind_estudiante INT AUTO_INCREMENT PRIMARY KEY,
+    id_colegio_estudiante INT,
+    nombre VARCHAR(25) NOT NULL,
+    apellido VARCHAR(50) NOT NULL,
+    cedula VARCHAR(20) UNIQUE NOT NULL,
+    fecha_nacimiento DATE,
+    correo VARCHAR(50),
+    activo BOOLEAN DEFAULT TRUE,
+    fecha_de_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_estudiante_colegio 
+        FOREIGN KEY (id_colegio_estudiante) REFERENCES colegio(id_colegio)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE
 );
 
-create table profesor(
-	id_profesor int auto_increment primary key,
-    nombre varchar(25) not null,
-    apellido varchar(50) not null,
-    telefono varchar(15) not null,
-    especialidad varchar(50) not null,
-    direccion varchar(50),
-    fecha_nacimiento date,
-    fecha_de_registro timestamp default current_timestamp
+CREATE TABLE profesor (
+    id_profesor INT AUTO_INCREMENT PRIMARY KEY,
+    id_colegio_profesor INT, -- Columna agregada para establecer la relación
+    nombre VARCHAR(25) NOT NULL,
+    apellido VARCHAR(50) NOT NULL,
+    telefono VARCHAR(15) NOT NULL,
+    especialidad VARCHAR(50) NOT NULL,
+    direccion VARCHAR(50),
+    fecha_nacimiento DATE,
+    fecha_de_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_profesor_colegio 
+        FOREIGN KEY (id_colegio_profesor) REFERENCES colegio(id_colegio)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE
 );
 
 
